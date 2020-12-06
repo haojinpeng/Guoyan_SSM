@@ -1,0 +1,57 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/qx_ssm?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+
+  #JPA Configuration:
+  jpa:
+    database: MySQL
+    show-sql: true
+    generate-ddl: true
+
+  #freemarker 配置信息静态资源方法
+  resources:
+    static-locations: classpath:/templates/,classpath:/templates/static/
+
+  #定义属性值
+  #user:
+  # age: 18
+  # name: 张三
+users: {name: 网二,age: 20}
+users2:
+  name: 嘟嘟
+  age: 20
+
+config-attributes:
+  value: hello,world
+  valueArray: [a,b,c,d,e,f,g]
+  valueList:
+  - beijing
+  - tianjin
+  - shanghai
+  - chongqing
+  valueMap:
+    name: springboot
+    age :    5
+  valueMapList:        #对应list<map>
+  - name: dudu
+    age: 8
+  - name: beibei
+    age: 3
+
+student:
+  name: zhangsan
+  age: 18
+  score: 100
+  addr: 陕西省西安市
+  email: shiyi@qq.com
+
+  #spring集成Mybatis环境
+  #pojo别名扫描包
+  mybatis:
+    type-aliases-package: com.it.entry
+#加载Mybatis映射文件
+#      mybatis.mapper-locations=classpath:mapper/*Mapper.xml
+

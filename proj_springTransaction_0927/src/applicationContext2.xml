@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--二类：声明式事务管理（通过配置实现）-AOP-->
+    <!--XML 方式的声明式事务管理-->
+
+    <context:component-scan base-package="com.it.spring.tx2.*"></context:component-scan>
+
+    <!-- 引入工程中src下的db.properties文件-->
+    <context:property-placeholder location="db.properties"></context:property-placeholder>
+    <!-- spring管理c3p0数据库连接池-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${jdbc.driverClass}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+    </bean>
+    <!--配置平台事物管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--配置增强(就是自定义的的切面) -->
+    <!-- 配置事物增强-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 事物管理规则-->
+            <!--<tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT"/>
+            <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT"/>
+            <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT"/>
+            <tx:method name="find*" read-only="true"/>-->
+            <tx:method name="*" propagation="REQUIRED"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+    <!-- AOP的配置-->
+    <aop:config>
+        <aop:pointcut id="pointcut1" expression="execution(* com.it.spring.tx2.service.AccountServiceImpl.transfer(..))"></aop:pointcut>
+        <!-- aop:aspect 多个通知和多个切入点的组合
+            aop:advisor 单个通知和单个切入点的组合-->
+        <aop:advisor pointcut-ref="pointcut1" advice-ref="txAdvice"></aop:advisor>
+    </aop:config>
+    <!-- dao -->
+    <bean id="accountDAO" class="com.it.spring.tx2.dao.AccountDAOImpl">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+
+</beans>

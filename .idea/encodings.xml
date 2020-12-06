@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/proj_springMVC_Maven_1020" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_springMVC_maven1019" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_springMVC_maven1027" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_spring_mybatis_1013" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_springboot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_springboot1104" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_springboot_redis1111" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_ssm_1028" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_ssm_Parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_ssm_Parent/proj_ssm_dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_ssm_Parent/proj_ssm_domain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_ssm_Parent/proj_ssm_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_ssm_Parent/proj_ssm_web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/proj_test_maven_1019" charset="UTF-8" />
+  </component>
+</project>

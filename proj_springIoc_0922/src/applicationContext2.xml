@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"> <!-- bean definitions here -->
+
+    <!-- spring开启注解-->
+    <context:component-scan base-package="com.it.ioc2.product.services;com.it.ioc2.product.dao"></context:component-scan>
+
+    <!--管理bean -->
+    <bean id="productDAO" class="com.it.ioc2.product.dao.ProductDAOImpl"></bean>
+    <bean id="orderDAO" class="com.it.ioc2.product.dao.OrderDAOImpl"></bean>
+    <bean id="productService" class="com.it.ioc2.product.services.ProductServiceImpl"></bean>
+    <bean id="orderService" class="com.it.ioc2.product.services.OrderServiceImpl"></bean>
+</beans>

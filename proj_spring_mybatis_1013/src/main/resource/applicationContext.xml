@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+">
+    <!--所有包都扫-->
+    <!--<context:annotation-config></context:annotation-config>-->
+    <!--指定扫-->
+    <context:component-scan base-package="com.it.*"></context:component-scan>
+     <!-- 引入db.properties文件-->
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <!-- 引入数据库连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+         <property name="driverClassName" value="${jdbc.driverClass}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+
+    </bean>
+    <!-- 2)sqlsessionFactory对象，配置到spring容器中-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 引入核心配置文件-->
+        <property name="configLocation" value="mybatis-config.xml"></property>
+        <!-- 引入datasource-->
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 引入别名包扫描器-->
+        <property name="typeAliasesPackage" value="com.it.sm.bean"></property>
+     </bean>
+    <!-- 动态代理模式二-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.it.sm.dao"></property>
+    </bean>
+</beans>

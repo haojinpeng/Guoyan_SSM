@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.ProvDAO">
+
+    <!--增加-->
+    <insert id="addProv" parameterType="Prov">
+        insert into Prov(prov_id,prov_name) values(#{prov_id},#{prov_name})
+    </insert>
+    <!--删除-->
+    <delete id="delProv" parameterType="Prov">
+        delete from Prov where prov_id=#{prov_id}
+    </delete>
+    <!--修改-->
+    <update id="updProv" parameterType="Prov">
+        update Prov set prov_name=#{prov_name} where prov_id=#{prov_id}
+    </update>
+    <!--查询所有加模糊查询-->
+    <select id="queryAll" parameterType="Prov" resultType="com.it.bean.Prov">
+        select * from Prov where 1=1
+        <if test="prov_id != null and prov_id != ''">
+            and prov_id like #{prov_id}
+        </if>
+        <!--<if test="prov_name != null and prov_name!='' ">
+            AND prov_name like
+            concat(concat('%',#{prov_name}),'%')
+        </if>-->
+        <if test="prov_name != null and prov_name!='' ">
+            AND prov_name like '%${prov_name}%'
+        </if>
+    </select>
+    <!--单个查询-->
+    <select id="findById" parameterType="Prov" resultType="com.it.bean.Prov">
+        select * from Prov  where prov_id=#{prov_id}
+    </select>
+</mapper>

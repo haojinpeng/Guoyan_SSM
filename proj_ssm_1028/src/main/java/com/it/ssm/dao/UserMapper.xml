@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.ssm.dao.UserMapper">
+
+    <!-- 查询所有-->
+    <select id="queryAllUser1" resultType="com.it.ssm.pojo.User" parameterType="com.it.ssm.pojo.User">
+        SELECT
+  `id`,
+  `su_name`,
+  `su_login_name`,
+  `su_login_passwd`,
+  `su_sex`,
+  `su_birth_dt`,
+  `su_icon`,
+  `su_address`,
+  `su_province`,
+  `su_city`,
+  `su_district`,
+  `su_dept_id`,
+  `su_email`,
+  `su_mobile`,
+  `su_status`,
+  `su_create_uid`,
+  `su_create_dt`
+FROM `db_wh`.`sys_user`
+
+    </select>
+
+
+    <!-- 分页查询 -->
+
+    <select id="queryAllUser" resultType="com.it.ssm.pojo.User" parameterType="map">
+
+          SELECT
+  `id`,
+  `su_name`,
+  `su_login_name`,
+  `su_login_passwd`,
+  `su_sex`,
+  `su_birth_dt`,
+  `su_icon`,
+  `su_address`,
+  `su_province`,
+  `su_city`,
+  `su_district`,
+  `su_dept_id`,
+  `su_email`,
+  `su_mobile`,
+  `su_status`,
+  `su_create_uid`,
+  `su_create_dt`
+FROM `db_wh`.`sys_user`
+      <if test="''!=su_name and su_name!=null">
+        where su_name like concat('%',#{su_name},'%')
+      </if>
+limit #{startIndex},#{pageRow}
+
+  </select>
+
+    <!-- 总记录数-->
+
+    <select id="queryUserCount" resultType="int" parameterType="map">
+
+     select count(*)  FROM `db_wh`.`sys_user`
+      <if test="''!=su_name and su_name!=null">
+        where su_name like concat('%',#{su_name},'%')
+      </if>
+
+
+  </select>
+
+    <select id="delUser" resultType="int" parameterType="int">
+     delete from `db_wh`.`sys_user`  where id=#{id}
+  </select>
+
+  <!--登陆-->
+  <select id="login" resultType="boolean" parameterType="com.it.ssm.pojo.User">
+    select *  FROM `db_wh`.`sys_user` where
+     `su_login_name`=#{su_login_name}
+       and
+    `su_login_passwd`=#{su_login_passwd}
+  </select>
+
+
+</mapper>

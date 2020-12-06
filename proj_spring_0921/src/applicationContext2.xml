@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- spring ioc注入方式 set-->
+    <!--<bean id="demoController2" class="com.it.controller.DemoController22">
+        &lt;!&ndash;<property name="name" value="张三"></property>&ndash;&gt;
+        &lt;!&ndash;或者&ndash;&gt;
+        <property name="name">
+            <value>李四</value>
+        </property>
+    </bean>-->
+
+    <bean id="item" class="com.it.bean.Item"></bean>
+    <bean id="employee" class="com.it.bean.Employee"></bean>
+
+    <!--构造器注入-->
+    <bean id="demoController2" class="com.it.controller.DemoController2">
+
+        <!--通过形参名字-->
+        <!--<constructor-arg name="name" value="王五"></constructor-arg>-->
+
+        <!--对象 -->
+        <constructor-arg name="item" ref="item"></constructor-arg>
+        <constructor-arg name="employee" ref="employee"></constructor-arg>
+
+        <!--通过索引-->
+        <!--<constructor-arg index="0">
+            <value>哈哈2</value>
+        </constructor-arg>
+        <constructor-arg index="1">
+            <value>12</value>
+        </constructor-arg>-->
+
+        <!--通过类型-->
+        <!--<constructor-arg type="java.lang.String">
+            <value>哈</value>
+        </constructor-arg>
+        <constructor-arg type="java.lang.Integer">
+            <value>122</value>
+        </constructor-arg>-->
+
+    </bean>
+
+
+</beans>

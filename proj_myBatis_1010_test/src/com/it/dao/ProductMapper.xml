@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.ProductMapper">
+    <!--增加-->
+    <insert id="addProduct" parameterType="Product">
+        INSERT INTO product (id,productNum,productName,productStatus)
+        VALUES(#{id},#{productNum},#{productName},#{productStatus})
+    </insert>
+    <!--删除-->
+    <delete id="delProduct" parameterType="Product">
+        delete from Product where id=#{id}
+    </delete>
+    <!--修改-->
+    <update id="updProduct" parameterType="Product">
+        update Product set productName=#{productName} where id=#{id}
+    </update>
+    <!--id查询-->
+    <select id="queryAllById" parameterType="Product" resultType="com.it.bean.Product">
+        select * from Product  where id=#{id}
+    </select>
+    <!--查询所有加模糊查询-->
+    <select id="queryAllProduct" parameterType="Product" resultType="com.it.bean.Product">
+        select * from Product where 1=1
+        <if test="productName != null and productName != ''">
+            and productName like '%${productName}%'
+        </if>
+    </select>
+    <!--status查询-->
+    <select id="queryAllByStatus" parameterType="Product" resultType="com.it.bean.Product">
+        select * from Product where productStatus=#{productStatus}
+    </select>
+    <!--查询id在10到20之间的产品信息-->
+    <select id="queryBetweenProduct" parameterType="Product" resultType="com.it.bean.Product">
+        SELECT * FROM product WHERE id BETWEEN #{begin} AND #{end}
+    </select>
+    <!--实现分页，可以查看任意一页内页-->
+    <select id="queryAllByLimit" parameterType="Product" resultType="com.it.bean.Product">
+        select * from product limit #{begin},5
+    </select>
+</mapper>

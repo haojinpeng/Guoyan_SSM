@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="demoController3" class="com.it.controller.DemoController3">
+
+        <!--list-->
+        <property name="stringList">
+            <list>
+                <value>a</value>
+                <value>b</value>
+                <value>c</value>
+            </list>
+        </property>
+
+        <!--set-->
+        <property name="stringSet">
+            <set>
+                <value>a</value>
+                <value>a1</value>
+                <value>a2</value>
+                <value>a3</value>
+            </set>
+        </property>
+
+        <!--map-->
+        <property name="maps">
+            <map>
+                <entry key="aa">
+                    <value>1</value>
+                </entry>
+                <entry key="aa2">
+                    <value>11</value>
+                </entry>
+                <entry key="aa31">
+                    <value>311</value>
+                </entry>
+                <entry key="aa31">
+                    <value>31</value>
+                </entry>
+            </map>
+        </property>
+
+    </bean>
+</beans>

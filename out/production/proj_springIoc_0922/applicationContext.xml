@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- spring下的注解;多个包用”;”分开-->
+    <context:component-scan base-package="com.it.ioc1.item.services;com.it.ioc1.item.dao"></context:component-scan>
+
+    <bean id="order" class="com.it.ioc1.item.pojo.Order" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="oname" value="手机"></property>
+    </bean>
+
+</beans>

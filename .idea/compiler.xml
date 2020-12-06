@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="proj_spring_mybatis_1013" />
+        <module name="proj_spring_mybatis_maven_1013" />
+        <module name="proj_springboot" />
+        <module name="proj_springboot1104" />
+        <module name="proj_springboot_redis1111" />
+        <module name="proj_springboot_test" />
+        <module name="proj_springMVC_maven1019" />
+        <module name="proj_springMVC_maven1027" />
+        <module name="proj_springMVC_maven_1019" />
+        <module name="proj_springMVC_Maven_1020" />
+        <module name="proj_ssm_1028" />
+        <module name="proj_ssm_1028_test" />
+        <module name="proj_ssm_dao" />
+        <module name="proj_ssm_domain" />
+        <module name="proj_ssm_service" />
+        <module name="proj_ssm_web" />
+        <module name="proj_test_maven_1019" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="proj_maven_1013" target="1.7" />
+      <module name="proj_spring_mybatis_1013" target="1.7" />
+      <module name="proj_spring_mybatis_maven1013" target="1.5" />
+      <module name="proj_spring_mybatis_maven_1013" target="1.5" />
+      <module name="proj_springboot" target="1.8" />
+      <module name="proj_springboot1104" target="1.8" />
+      <module name="proj_springboot_redis1111" target="1.8" />
+      <module name="proj_springboot_test" target="1.8" />
+      <module name="proj_springMVC_maven1019" target="1.7" />
+      <module name="proj_springMVC_maven1027" target="1.7" />
+      <module name="proj_springMVC_maven_1019" target="1.5" />
+      <module name="proj_springMVC_Maven_1020" target="1.7" />
+      <module name="proj_ssm_1028" target="1.7" />
+      <module name="proj_ssm_1028_test" target="1.7" />
+      <module name="proj_ssm_dao" target="1.7" />
+      <module name="proj_ssm_domain" target="1.7" />
+      <module name="proj_ssm_Parent" target="1.7" />
+      <module name="proj_ssm_service" target="1.7" />
+      <module name="proj_ssm_web" target="1.7" />
+      <module name="proj_test_maven_1019" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.ProvMapper">
+    <!--parameterType(输入类型)-->
+    <select id="selectProvById" parameterType="QueryVo" resultType="com.it.bean.Prov">
+        select * from prov where prov_id=#{prov.prov_id}
+    </select>
+    <!--输出简单类型 -->
+    <select id="getCount" resultType="int">
+        select count(1) from Prov
+    </select>
+</mapper>

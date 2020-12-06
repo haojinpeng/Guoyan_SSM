@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it2.dao.ProvMapper">
+    <!-- 查询-->
+
+    <!-- 添加
+
+    <insert
+id="insertAuthor"
+parameterType="domain.blog.Author"
+flushCache="true"
+statementType="PREPARED"
+keyProperty=""
+useGeneratedKeys=""
+timeout="20000">
+
+  id:在命名空间中唯一的标识符，可以被用来引用这条语句。
+    一般和方法名一致
+    parameterType：方法传入参数的类型
+    flushCache:将其设置为 true，不论语句什么时候被带哦用，都会导致缓存被清
+空。默认值：false。
+ statementType:使用选择使用 Statement，PreparedStatement 或 CallableStatement。
+ 默认值：PREPARED。
+ useGeneratedKeys:（仅对 insert 有 用 ） 这 会 告 诉 MyBatis 使 用 JDBC 的
+getGeneratedKeys 方法来取出由数据（比如：像 MySQL 和 SQL
+Server 这样的数据库管理系统的自动递增字段）内部生成的主键。
+默认值：false。
+keyProperty:（仅对insert有用）标记一个属性，MyBatis 会通过getGeneratedKeys
+或者通过 insert 语句的 selectKey 子元素设置它的值。默认：不设置
+    -->
+    <insert id="addProv" parameterType="Prov">
+        insert  into Prov(prov_id,prov_name) values(#{prov_id},#{prov_name})
+    </insert>
+
+    <!-- 修改操作-->
+    <update id="updProv" parameterType="Prov">
+
+UPDATE `shop`.`prov`
+SET `prov_name` = #{prov_name}
+WHERE `prov_id` = #{prov_id}
+        <!-- update Prov
+        set prov_name=#{prov_name}
+         where prov_id=#{prov_id}-->
+    </update>
+    <!-- 删除操作-->
+    <delete id="delProv" parameterType="Prov">
+        delete from Prov where prov_id=#{prov_id}
+    </delete>
+
+    <!--
+
+    resultType:返回结果的类型  的类的完全限定名或别名
+    resultMap：命名引用外部的 resultMap
+    许多复杂映射的情形
+
+    -->
+
+  <!--  <select id="queryAll" parameterType="Prov" resultType="Prov">
+        select * from Prov  where 1=1
+
+         AND prov_id like '%${prov_id}%'
+         and prov_name like '%${prov_name}%'
+
+    </select>-->
+
+   <!-- <select id="queryAll" parameterType="Prov" resultType="Prov">
+        select * from Prov  where 1=1
+
+        <if test="prov_id != null and prov_id!='' ">
+            AND prov_id like #{prov_id}
+        </if>
+
+        <if test="prov_name != null and prov_name!='' ">
+            AND prov_name like #{prov_name}
+        </if>
+
+    </select>-->
+
+    <select id="queryAll" parameterType="Prov" resultType="Prov">
+        select * from Prov  where 1=1
+
+        <if test="prov_id != null and prov_id!='' ">
+            AND prov_id like #{prov_id}
+        </if>
+
+        <if test="prov_name != null and prov_name!='' ">
+            AND prov_name like
+            concat(concat('%',#{prov_name}),'%')
+        </if>
+
+    </select>
+
+    <!-- 查询单个-->
+    <select id="findById" parameterType="Prov" resultType="Prov">
+         select * from Prov  where prov_id=#{prov_id}
+
+    </select>
+</mapper>
